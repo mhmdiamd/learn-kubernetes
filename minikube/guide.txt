@@ -1,0 +1,2 @@
+# Start Minikube
+-> minikube start --vm-driver=virtualbox --cpus=6 --memory=6g --disk-size=20g
