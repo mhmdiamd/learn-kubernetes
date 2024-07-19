@@ -1,0 +1,14 @@
+# Namespace berguna jika ingin membuat pod dengan nama yang sama
+# dengan namespcae, pod dengan nama sama bisa dibuat asalkan namespacenya berbeda
+#
+# Membuat pod dengan namespace
+# -> kubectl create -f file.yaml --namespace (namespace)
+# -> kubectl create -f nginx.yaml --namespace finance
+
+# Menghapus namespace
+# kubectl delete --namespace finance
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: finance
