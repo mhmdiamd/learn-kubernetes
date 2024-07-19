@@ -1,0 +1,38 @@
+# Check daemon
+# -> kubectl get daemonsets
+
+# Check node
+# -> kubectl get nodes
+
+# Delete daemonsets
+# -> kubectl delete daemonsets daemon-nginx
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: daemon-nginx
+  labels:
+    name: daemon-nginx
+spec:
+  selector:
+    matchLabels:
+      app: daemon-nginx
+  template:
+    metadata:
+      labels:
+        app: daemon-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 1
+            successThreshold: 1
+            failureThreshold: 1
