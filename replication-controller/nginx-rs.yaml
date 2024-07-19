@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-rs
+spec:
+  replicas: 3
+  selector:
+    # matchLabels:
+    #   app: nginx
+
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - nginx
+      - key: env
+        operator: In
+        values:
+          - prod
+          - qa
+          - dev
+      # In, value label harus ada di value in
+      # NotIn, value label tidak boleh ada di value in
+      # Exists, label harus ada
+      # NotExists, label tidak boleh ada
+  template:
+    metadata:
+      labels:
+        app: nginx
+        env: prod
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          ports:
+            - containerPort: 80
