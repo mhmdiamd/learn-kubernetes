@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-with-label
+  # label berguna sebagai identitas dari sebuah pod itu sendiri
+  labels:
+    team: finance
+    version: 1.4.5
+    environment: production
+  # Cara mengubah atau menambah label
+  # kubectl label pod namapod key=value
+  # kubectl label pod namapod key=value --overwrite (mengubah)
+
+  # Mencari pod dengan label
+  # kubectl get pods -l key ->
+  # kubectl get pods -l environment=qa
+  # kubectl get pods -l !environment
+  # kubectl get pods -l !environment=qa
+  # kubectl get pods -l `environment in (development, production)`
+  # kubectl get pods -l `environment notin (development, production)`
+spec:
+  containers:
+    - name: nginx-with-label
+      image: nginx
+      ports:
+        - containerPort: 80
