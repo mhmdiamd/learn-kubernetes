@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-with-probe
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort: 80
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        timeoutSeconds: 1
+        successThreshold: 1
+        failureThreshold: 1
+        # initialDelaySeconds, waktu setelah container jalan dan dilakukan pengecekan, default nya 0 (jangan di isi 0, karena dia bakal melakukan pengecekan langsung saat aplikasi dimulai, karna beberapa kasus ada aplikasi yang butuh waktu untuk melakukan startup)
+        # periodSeconds, seberapa sering pengecekan dilakukan, default nya 10
+        # timeoutSeconds, waktu timeout ketika pengecekan gagal, default 1
+        # successThreshold, minimum dianggap sukses setelah berstatus failure, default 1
+        # failureThreshold, minimum dianggap gagal, default 3
