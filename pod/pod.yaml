@@ -1,3 +1,15 @@
+# Membuat pod
+# kubectl create -f namefile.yaml
+
+# Menghapus pod
+# kubectl delete pod namepod1 namepod2
+
+# Menghapus pod berdasarkan label
+# kubectl delete pod -l environment=development
+
+# Mengahpus pod berdasarkan namespace
+# kubectl delete pod -all --namespace (namespace)
+
 apiVersion: v1
 kind: Pod
 metadata:
