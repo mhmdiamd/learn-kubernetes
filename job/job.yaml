@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: nodejs-job
+spec:
+  completions: 4 # job akan dianggap complete jika dijalankan 4x
+  parallelism: 2 # seberapa banyak job yang dikerjakan secara berbarengan
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: nodejs-job
+          image: mhmdiamd/nodejs-job
