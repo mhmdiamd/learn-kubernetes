@@ -1,0 +1,17 @@
+# kubectl rollout history deployment namadeployment
+# Melihat history rollout
+
+# kubectl rollout pause deployment namadeployment
+# Menandai sebagai pause
+
+# kubectl rollout resume deployment namadeployment
+# Resume pause
+
+# kubectl rollout restart deployment namadeployment
+# Merestart rollout
+
+# kubectl rollout status deployment namadeployment
+# Melihat status rollout
+
+# kubectl rollout undo deployment namadeployment
+# Undo ke rollout sebelumnya
